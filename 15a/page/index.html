@@ -20,8 +20,8 @@
       --radius: 16px;
 
       /* גודל לוגו */
-      --logo-desktop: 170px;
-      --logo-mobile: 190px;
+      --logo-desktop: 400px;
+      --logo-mobile: 300px;
     }
 
     * { box-sizing: border-box; }
@@ -49,25 +49,29 @@
     header{
       position: relative;
       text-align: center;
-      margin-bottom: 34px;
-      padding-top: 10px;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 34px;
+      padding-top: calc(var(--logo-desktop) + 20px);
     }
 
-    .header-logo{
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: var(--logo-desktop);
-      height: auto;
-      display: block;
-      filter: drop-shadow(0 12px 18px rgba(0,0,0,0.35));
-      user-select: none;
-      -webkit-user-drag: none;
-    }
+.header-logo{
+  width: var(--logo-desktop); /* 300px */
+  max-width: 100%;
+  height: auto;
+
+  display: block;
+  margin: 0 auto 16px; /* מרכז + רווח מתחת */
+
+  filter: drop-shadow(0 12px 18px rgba(0,0,0,0.35));
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
 
     /* כדי שהכותרת לא "תעלה" על הלוגו בדסקטופ */
     .header-content{
-      padding-right: calc(var(--logo-desktop) + 14px);
+      /* padding-right: calc(var(--logo-desktop) + 14px); */
     }
 
     header h1{
@@ -188,7 +192,6 @@
 <body>
   <div class="container">
     <header>
-      <!-- לוגו מתוך התיקייה (לא Base64) -->
       <img class="header-logo" src="logo.png" alt="לוגו גדוד 8101" />
 
       <div class="header-content">
@@ -228,7 +231,7 @@
     <footer>
       מקווים שנהנית מהשירות ומהממשק שנבנה מיום ליום.<br />
       לכל דבר ועניין,<br />
-      מוזמנים לפנות אלינו
+      מוזמנים לפנות אלינו 🙃
     </footer>
   </div>
 </body>
