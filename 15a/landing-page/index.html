@@ -7,15 +7,21 @@
 
   <style>
     :root {
-      --bg: #0b1220;
-      --text: #f3f4f6;
-      --muted: rgba(243,244,246,0.78);
+      /* ערכת נושא בהירה */
+      --bg: #ffffff;
+      --surface: #f6f7f9;
+      --surface-2: #ffffff;
 
+      --text: #1f2933;
+      --muted: #6b7280;
+
+      /* צבעי מותג */
       --brand-orange: #f59e0b;
       --brand-navy: #0b2a6b;
       --golani-green: #2e7d32;
 
-      --shadow: 0 18px 60px rgba(0,0,0,0.35);
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
       --radius: 16px;
     }
 
@@ -25,9 +31,8 @@
       margin: 0;
       font-family: Arial, "Heebo", sans-serif;
       background:
-        radial-gradient(1200px 600px at 20% 0%, rgba(46,125,50,0.22), transparent 60%),
-        radial-gradient(900px 500px at 80% 10%, rgba(245,158,11,0.20), transparent 55%),
-        radial-gradient(900px 700px at 50% 100%, rgba(11,42,107,0.25), transparent 60%),
+        radial-gradient(900px 500px at 80% 0%, rgba(245,158,11,0.10), transparent 55%),
+        radial-gradient(900px 600px at 20% 0%, rgba(46,125,50,0.10), transparent 60%),
         var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -49,7 +54,7 @@
       font-weight: 900;
       letter-spacing: 1px;
       margin-bottom: 14px;
-      color: var(--brand-orange);
+      color: var(--brand-navy);
     }
 
     .logo-wrap {
@@ -57,10 +62,10 @@
       height: 180px;
       margin: 0 auto 18px;
       border-radius: 22px;
-      background: rgba(255,255,255,0.06);
+      background: var(--surface);
       padding: 14px;
       box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,0.14);
+      border: 1px solid var(--border);
     }
 
     .logo-wrap img {
@@ -68,12 +73,12 @@
       height: 100%;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 10px 18px rgba(0,0,0,0.25));
     }
 
     header h1 {
       font-size: clamp(1.8rem, 3.2vw, 2.3rem);
       margin: 0 0 10px;
+      color: var(--text);
     }
 
     header p {
@@ -91,23 +96,24 @@
     }
 
     .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.05));
-      border: 1px solid rgba(255,255,255,0.14);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 22px 18px;
       text-align: center;
-      box-shadow: 0 14px 45px rgba(0,0,0,0.28);
-      transition: transform 0.18s ease, border-color 0.18s ease;
+      box-shadow: var(--shadow);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
     .card:hover {
       transform: translateY(-3px);
-      border-color: rgba(245,158,11,0.35);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
     }
 
     .card h2 {
       margin: 0 0 10px;
       font-size: 1.22rem;
+      color: var(--brand-navy);
     }
 
     .card a {
@@ -117,21 +123,23 @@
       border-radius: 12px;
       font-weight: 800;
       text-decoration: none;
-      color: #0b1220;
+      color: #1f2933;
       background: linear-gradient(135deg, var(--brand-orange), #ffd166);
-      box-shadow: 0 12px 28px rgba(245,158,11,0.25);
-      border: 1px solid rgba(255,255,255,0.25);
+      box-shadow: 0 8px 22px rgba(245,158,11,0.25);
+      border: 1px solid rgba(0,0,0,0.05);
       min-width: 160px;
     }
+
+    .card a:hover { filter: brightness(1.03); }
 
     .tracker {
       margin-top: 24px;
       text-align: center;
       padding: 20px 18px;
       border-radius: var(--radius);
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 14px 45px rgba(0,0,0,0.22);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
     }
 
     .tracker p {
@@ -145,18 +153,18 @@
       border-radius: 12px;
       font-size: 1.05rem;
       font-weight: 900;
-      color: #07130a;
+      color: #0f2a18;
       text-decoration: none;
       background: linear-gradient(135deg, var(--golani-green), #a5d6a7);
-      box-shadow: 0 12px 28px rgba(46,125,50,0.22);
-      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 8px 22px rgba(46,125,50,0.25);
+      border: 1px solid rgba(0,0,0,0.05);
     }
 
     footer {
       margin-top: 26px;
       text-align: center;
       font-size: 0.95em;
-      color: rgba(243,244,246,0.70);
+      color: var(--muted);
     }
   </style>
 </head>
@@ -167,9 +175,10 @@
       <div class="unit-title">גדוד 8101</div>
 
       <div class="logo-wrap">
+        <!-- אפשר לשים כאן גם src="logo.png" אם שומרים את התמונה בקובץ נפרד -->
         <img
           alt="לוגו גדוד 8101"
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
+          src="data:image/png;base64,REPLACE_WITH_LOGO_BASE64"
         />
       </div>
 
@@ -183,23 +192,27 @@
     <section class="cards">
       <div class="card">
         <h2>דרישות לוגיסטיות</h2>
-        <a href="https://forms.gle/zTQgQmpHje6dizm19" target="_blank">מעבר לטופס</a>
+        <a href="https://forms.gle/zTQgQmpHje6dizm19" target="_blank" rel="noopener">מעבר לטופס</a>
       </div>
 
       <div class="card">
         <h2>דרישות שיירות כ״א</h2>
-        <a href="https://forms.gle/SwMXkx2pwucAqr878" target="_blank">מעבר לטופס</a>
+        <a href="https://forms.gle/SwMXkx2pwucAqr878" target="_blank" rel="noopener">מעבר לטופס</a>
       </div>
 
       <div class="card">
         <h2>דרישות תקלות בינוי</h2>
-        <a href="https://forms.gle/GBgatq8RXPuKAEAn7" target="_blank">מעבר לטופס</a>
+        <a href="https://forms.gle/GBgatq8RXPuKAEAn7" target="_blank" rel="noopener">מעבר לטופס</a>
       </div>
     </section>
 
     <section class="tracker">
       <p>בכל עת ניתן לעקוב אחר סטטוס הדרישות:</p>
-      <a href="https://docs.google.com/spreadsheets/d/1f8T-SCZinfRBhXpHSBtGr9HSniOvbsYAeJ68QZqsu_I/edit?gid=0" target="_blank">
+      <a
+        href="https://docs.google.com/spreadsheets/d/1f8T-SCZinfRBhXpHSBtGr9HSniOvbsYAeJ68QZqsu_I/edit?gid=0"
+        target="_blank"
+        rel="noopener"
+      >
         דף מעקב
       </a>
     </section>
