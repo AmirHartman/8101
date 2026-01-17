@@ -19,13 +19,9 @@
       --shadow: 0 18px 60px rgba(0,0,0,0.35);
       --radius: 16px;
 
-      /* הגדרות לוגו כרקע */
-      --logo-size-desktop: 220px;
-      --logo-size-mobile: 240px;
-      --logo-opacity: 0.08;
-      --logo-x-desktop: 28px;  /* מרחק מהימין */
-      --logo-y-desktop: 22px;  /* מרחק מלמעלה */
-      --logo-y-mobile: 120px;  /* מיקום במובייל (מתחת לכותרת) */
+      /* גודל לוגו */
+      --logo-desktop: 170px;
+      --logo-mobile: 190px;
     }
 
     * { box-sizing: border-box; }
@@ -40,44 +36,38 @@
         var(--bg);
       color: var(--text);
       line-height: 1.6;
-      position: relative;
       overflow-x: hidden;
-    }
-
-    /* לוגו כחלק מהרקע (בלי קופסה) */
-    body::before{
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: url("logo.png");
-      background-repeat: no-repeat;
-      background-size: var(--logo-size-desktop);
-      background-position: right var(--logo-x-desktop) top var(--logo-y-desktop);
-      opacity: var(--logo-opacity);
-      pointer-events: none;
-      z-index: 0;
-      filter: saturate(1.05) contrast(1.05);
     }
 
     .container{
       max-width: 900px;
       margin: auto;
       padding: 40px 18px 60px;
-      position: relative;
-      z-index: 1; /* חשוב כדי שהתוכן יהיה מעל הלוגו */
     }
 
+    /* HEADER חדש: לוגו בתוך ההדר, בלי קופסה ובלי שקיפות */
     header{
+      position: relative;
       text-align: center;
       margin-bottom: 34px;
+      padding-top: 10px;
     }
 
-    .unit-title{
-      font-size: 1.4rem;
-      font-weight: 900;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
-      color: var(--brand-orange);
+    .header-logo{
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: var(--logo-desktop);
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 12px 18px rgba(0,0,0,0.35));
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* כדי שהכותרת לא "תעלה" על הלוגו בדסקטופ */
+    .header-content{
+      padding-right: calc(var(--logo-desktop) + 14px);
     }
 
     header h1{
@@ -176,16 +166,20 @@
       color: rgba(243,244,246,0.70);
     }
 
-    /* מובייל: הלוגו עובר למרכז כדי "לשבת נכון" */
+    /* מובייל: הלוגו עובר למרכז, מעל הטקסט */
     @media (max-width: 720px){
-      body::before{
-        background-size: var(--logo-size-mobile);
-        background-position: center top var(--logo-y-mobile);
-        opacity: 0.07; /* מעט יותר עדין במובייל */
+      header{
+        padding-top: 0;
       }
 
-      .container{
-        padding-top: 52px; /* קצת מרווח כי הלוגו במרכז למעלה */
+      .header-logo{
+        position: static;
+        width: var(--logo-mobile);
+        margin: 0 auto 10px;
+      }
+
+      .header-content{
+        padding-right: 0;
       }
     }
   </style>
@@ -194,13 +188,16 @@
 <body>
   <div class="container">
     <header>
-      <div class="unit-title">גדוד 8101</div>
+      <!-- לוגו מתוך התיקייה (לא Base64) -->
+      <img class="header-logo" src="logo.png" alt="לוגו גדוד 8101" />
 
-      <h1>שלום סמ״פ / רס״פ יקר</h1>
-      <p>
-        לפניך לינקים לטובת דרישות לוגיסטיות, שיירות כ״א ופערי בינוי.<br />
-        פנייתך תעבור ל־15א ותטופל בהקדם.
-      </p>
+      <div class="header-content">
+        <h1>שלום סמ״פ / רס״פ יקר</h1>
+        <p>
+          לפניך לינקים לטובת דרישות לוגיסטיות, שיירות כ״א ופערי בינוי.<br />
+          פנייתך תעבור ל־15א ותטופל בהקדם.
+        </p>
+      </div>
     </header>
 
     <section class="cards">
@@ -222,14 +219,15 @@
 
     <section class="tracker">
       <p>בכל עת ניתן לעקוב אחר סטטוס הדרישות:</p>
-      <a href="https://docs.google.com/spreadsheets/d/1f8T-SCZinfRBhXpHSBtGr9HSniOvbsYAeJ68QZqsu_I/edit?gid=0" target="_blank" rel="noopener">
+      <a href="https://docs.google.com/spreadsheets/d/1f8T-SCZinfRBhXpHSBtGr9HSniOvbsYAeJ68QZqsu_I/edit?gid=0"
+         target="_blank" rel="noopener">
         דף מעקב
       </a>
     </section>
 
     <footer>
       מקווים שנהנית מהשירות ומהממשק שנבנה מיום ליום.<br />
-      לכל דבר ועניין<br />
+      לכל דבר ועניין,<br />
       מוזמנים לפנות אלינו
     </footer>
   </div>
