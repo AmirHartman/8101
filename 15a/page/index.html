@@ -19,7 +19,7 @@
       --shadow: 0 18px 60px rgba(0,0,0,0.35);
       --radius: 16px;
 
-      /* גודל לוגו */
+      /* Logo sizes */
       --logo-desktop: 400px;
       --logo-mobile: 300px;
     }
@@ -45,33 +45,27 @@
       padding: 40px 18px 60px;
     }
 
-    /* HEADER חדש: לוגו בתוך ההדר, בלי קופסה ובלי שקיפות */
+    /* Header: logo above the text (no extra top padding) */
     header{
       position: relative;
       text-align: center;
       width: 100%;
       max-width: 900px;
       margin: 0 auto 34px;
-      padding-top: calc(var(--logo-desktop) + 20px);
+      padding-top: 0;
     }
 
-.header-logo{
-  width: var(--logo-desktop); /* 300px */
-  max-width: 100%;
-  height: auto;
+    .header-logo{
+      width: var(--logo-desktop);
+      max-width: 100%;
+      height: auto;
 
-  display: block;
-  margin: 0 auto 16px; /* מרכז + רווח מתחת */
+      display: block;
+      margin: 0 auto 16px; /* Center + spacing below */
 
-  filter: drop-shadow(0 12px 18px rgba(0,0,0,0.35));
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-
-    /* כדי שהכותרת לא "תעלה" על הלוגו בדסקטופ */
-    .header-content{
-      /* padding-right: calc(var(--logo-desktop) + 14px); */
+      filter: drop-shadow(0 12px 18px rgba(0,0,0,0.35));
+      user-select: none;
+      -webkit-user-drag: none;
     }
 
     header h1{
@@ -170,20 +164,11 @@
       color: rgba(243,244,246,0.70);
     }
 
-    /* מובייל: הלוגו עובר למרכז, מעל הטקסט */
+    /* Mobile: reduce logo width */
     @media (max-width: 720px){
-      header{
-        padding-top: 0;
-      }
-
       .header-logo{
-        position: static;
         width: var(--logo-mobile);
         margin: 0 auto 10px;
-      }
-
-      .header-content{
-        padding-right: 0;
       }
     }
   </style>
@@ -194,13 +179,11 @@
     <header>
       <img class="header-logo" src="logo.png" alt="לוגו גדוד 8101" />
 
-      <div class="header-content">
-        <h1>שלום סמ״פ / רס״פ יקר</h1>
-        <p>
-          לפניך לינקים לטובת דרישות לוגיסטיות, שיירות כ״א ופערי בינוי.<br />
-          פנייתך תעבור ל־15א ותטופל בהקדם.
-        </p>
-      </div>
+      <h1>שלום סמ״פ / רס״פ יקר</h1>
+      <p>
+        לפניך לינקים לטובת דרישות לוגיסטיות, שיירות כ״א ופערי בינוי.<br />
+        פנייתך תעבור ל־15א ותטופל בהקדם.
+      </p>
     </header>
 
     <section class="cards">
