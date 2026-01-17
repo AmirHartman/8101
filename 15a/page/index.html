@@ -26,7 +26,13 @@
 
     * { box-sizing: border-box; }
 
+    html, body{
+      height: 100%;
+    }
+
+
     body{
+      min-height: 100vh;     
       margin: 0;
       font-family: Arial, "Heebo", sans-serif;
       background:
@@ -34,10 +40,13 @@
         radial-gradient(900px 500px at 80% 10%, rgba(245,158,11,0.20), transparent 55%),
         radial-gradient(900px 700px at 50% 100%, rgba(11,42,107,0.25), transparent 60%),
         var(--bg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
     }
+
 
     .container{
       max-width: 900px;
